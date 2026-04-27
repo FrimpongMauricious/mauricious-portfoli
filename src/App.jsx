@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useMotionValue, animate, useInView } from 'framer-motion'
 import heroImg from './assets/hero.png'
+import passportImg from './assets/maur_passport_picture.jpeg'
 import googleITCert   from './assets/Google_IT_Support_cert.pdf'
 import itSecurityCert from './assets/IT_security_cert.pdf'
 import knustAICert    from './assets/KNUST_AI certificate.pdf'
@@ -242,6 +243,28 @@ export default function App() {
   const [menuOpen, setMenuOpen]     = useState(false)
   const [activeCert, setActiveCert] = useState(null)
   const [scrolled, setScrolled]     = useState(false)
+
+  useEffect(() => {
+    const img = new Image()
+    img.src = passportImg
+    img.onload = () => {
+      const size = 64
+      const canvas = document.createElement('canvas')
+      canvas.width = size
+      canvas.height = size
+      const ctx = canvas.getContext('2d')
+      ctx.beginPath()
+      ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2)
+      ctx.closePath()
+      ctx.clip()
+      ctx.drawImage(img, 0, 0, size, size)
+      const link = document.querySelector("link[rel*='icon']") || document.createElement('link')
+      link.rel = 'icon'
+      link.type = 'image/png'
+      link.href = canvas.toDataURL('image/png')
+      document.head.appendChild(link)
+    }
+  }, [])
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60)
