@@ -442,12 +442,18 @@ export default function App() {
             </div>
             <div className="modal__body">
               {activeCert.type === 'pdf'
-                ? <iframe src={activeCert.file} title={activeCert.title} className="modal__iframe" />
+                ? <object data={activeCert.file} type="application/pdf" className="modal__iframe">
+                    <div className="modal__pdf-fallback">
+                      <p>Your browser cannot display PDFs inline.</p>
+                      <a href={activeCert.file} target="_blank" rel="noreferrer" className="btn btn--ghost">Open PDF</a>
+                    </div>
+                  </object>
                 : <img src={activeCert.file} alt={activeCert.title} className="modal__img" />
               }
             </div>
             <div className="modal__foot">
-              <a href={activeCert.file} download className="btn btn--primary">Download Certificate</a>
+              <a href={activeCert.file} target="_blank" rel="noreferrer" className="btn btn--ghost">Open in New Tab</a>
+              <a href={activeCert.file} download className="btn btn--primary">Download</a>
             </div>
           </div>
         </div>
