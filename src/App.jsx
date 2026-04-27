@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence, useMotionValue, animate, useInView } from 'framer-motion'
 import heroImg from './assets/hero.png'
 import googleITCert   from './assets/Google_IT_Support_cert.pdf'
 import itSecurityCert from './assets/IT_security_cert.pdf'
@@ -10,6 +11,66 @@ import pythonCert     from './assets/python_cert_from_devtownn.pdf'
 import mentorshipCert from './assets/mentorship certification.jpg'
 import programmerCert from './assets/programmer of the year certficate.jpg'
 import './App.css'
+
+/* ── Animation variants ── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+}
+const fadeIn = {
+  hidden: { opacity: 0 },
+  show:   { opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } },
+}
+const stagger = (delay = 0.09) => ({
+  hidden: {},
+  show:   { transition: { staggerChildren: delay } },
+})
+const overlayV = {
+  hidden: { opacity: 0 },
+  show:   { opacity: 1, transition: { duration: 0.25 } },
+  exit:   { opacity: 0, transition: { duration: 0.2 } },
+}
+const modalV = {
+  hidden: { opacity: 0, scale: 0.95, y: 24 },
+  show:   { opacity: 1, scale: 1, y: 0, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } },
+  exit:   { opacity: 0, scale: 0.95, y: 24, transition: { duration: 0.22 } },
+}
+
+/* Reusable scroll-reveal wrapper */
+function Reveal({ children, className, delay = 0, ...rest }) {
+  return (
+    <motion.div
+      className={className}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ delay }}
+      {...rest}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+function CountUp({ to, suffix = '', duration = 1.8 }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-60px' })
+  const motionVal = useMotionValue(0)
+  const [display, setDisplay] = useState(0)
+
+  useEffect(() => {
+    return motionVal.on('change', v => setDisplay(Math.floor(v)))
+  }, [motionVal])
+
+  useEffect(() => {
+    if (!isInView) return
+    const controls = animate(motionVal, to, { duration, ease: [0.22, 1, 0.36, 1] })
+    return controls.stop
+  }, [isInView, motionVal, to, duration])
+
+  return <span ref={ref}>{display}{suffix}</span>
+}
 
 const NAV = ['About', 'Experience', 'Projects', 'Skills', 'Certifications', 'Contact']
 
@@ -202,7 +263,12 @@ export default function App() {
     <div className="pf">
 
       {/* ── Navbar ── */}
-      <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
+      <motion.nav
+        className={`nav${scrolled ? ' nav--scrolled' : ''}`}
+        variants={fadeIn}
+        initial="hidden"
+        animate="show"
+      >
         <div className="nav__inner">
           <button className="nav__logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             MF<span className="nav__dot">.</span>
@@ -225,35 +291,46 @@ export default function App() {
             <button key={l} onClick={() => scrollTo(l)}>{l}</button>
           ))}
         </div>
-      </nav>
+      </motion.nav>
 
       {/* ── Hero ── */}
       <section id="hero" className="hero">
         <div className="hero__glow hero__glow--1" />
         <div className="hero__glow hero__glow--2" />
         <div className="hero__inner">
-          <div className="hero__text">
-            <span className="hero__badge">
+          <motion.div
+            className="hero__text"
+            variants={stagger(0.12)}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.span className="hero__badge" variants={fadeUp}>
               <span className="hero__badge-dot" />
               CTO at Lobi &nbsp;·&nbsp; Open to opportunities
-            </span>
-            <p className="hero__greeting">Hello, I'm</p>
-            <h1 className="hero__name">
+            </motion.span>
+            <motion.p className="hero__greeting" variants={fadeUp}>Hello, I'm</motion.p>
+            <motion.h1 className="hero__name" variants={fadeUp}>
               Mauricious<br />
               <span className="grad-text">Frimpong</span>
-            </h1>
-            <p className="hero__role">
+            </motion.h1>
+            <motion.p className="hero__role" variants={fadeUp}>
               Full-Stack Developer &nbsp;·&nbsp; AI Enthusiast &nbsp;·&nbsp; KNUST Computer Science
-            </p>
-            <div className="hero__cta">
+            </motion.p>
+            <motion.div className="hero__cta" variants={fadeUp}>
               <button className="btn btn--primary" onClick={() => scrollTo('Projects')}>View Projects</button>
               <button className="btn btn--outline" onClick={() => scrollTo('Contact')}>Get In Touch</button>
-            </div>
-          </div>
-          <div className="hero__photo-wrap">
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="hero__photo-wrap"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="hero__photo-ring" />
             <img src={heroImg} alt="Mauricious Frimpong" className="hero__photo" />
-          </div>
+          </motion.div>
         </div>
         <button className="hero__scroll" onClick={() => scrollTo('About')} aria-label="Scroll down">
           <div className="hero__scroll-dot" />
@@ -263,40 +340,50 @@ export default function App() {
       {/* ── About ── */}
       <section id="about" className="section">
         <div className="container">
-          <h2 className="sec-title">About <span className="grad-text">Me</span></h2>
+          <Reveal><h2 className="sec-title">About <span className="grad-text">Me</span></h2></Reveal>
           <div className="about__grid">
-            <div className="about__bio">
-              <p>
-                I'm a <strong>Computer Science undergraduate at KNUST, Ghana</strong>, pursuing First Class
-                Honours, with a proven record of building real-world software that ships. I currently serve
-                as <strong>Chief Technology Officer of Lobi</strong>, a ride-hailing platform under Natura
-                Corporation, where I lead a team of five engineers.
-              </p>
-              <p>
-                Recognised as <strong>Male Programmer of the Year (2024/2025)</strong> by the KNUST
-                Department of Computer Science, and a Top 4 finisher at the West African BeTechConnected
-                Hackathon. I'm also Project Coordinator of the{' '}
-                <strong>Claude Builder Club at KNUST</strong> — a community of 800+ students — and a
-                voluntary BECE tutor and Python content creator on YouTube.
-              </p>
-              <p>
-                I build with React, React Native, Flutter, Spring Boot, Flask, and PostgreSQL, and I
-                integrate AI into everything I touch.
-              </p>
-            </div>
-            <div className="about__stats">
+            <Reveal delay={0.05}>
+              <div className="about__bio">
+                <p>
+                  I'm a <strong>Computer Science undergraduate at KNUST, Ghana</strong>, pursuing First Class
+                  Honours, with a proven record of building real-world software that ships. I currently serve
+                  as <strong>Chief Technology Officer of Lobi</strong>, a ride-hailing platform under Natura
+                  Corporation, where I lead a team of five engineers.
+                </p>
+                <p>
+                  Recognised as <strong>Male Programmer of the Year (2024/2025)</strong> by the KNUST
+                  Department of Computer Science, and a Top 4 finisher at the West African BeTechConnected
+                  Hackathon. I'm also Project Coordinator of the{' '}
+                  <strong>Claude Builder Club at KNUST</strong> — a community of 800+ students — and a
+                  voluntary BECE tutor and Python content creator on YouTube.
+                </p>
+                <p>
+                  I build with React, React Native, Flutter, Spring Boot, Flask, and PostgreSQL, and I
+                  integrate AI into everything I touch.
+                </p>
+              </div>
+            </Reveal>
+            <motion.div
+              className="about__stats"
+              variants={stagger(0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               {[
-                { val: '5+',  lbl: 'Shipped Projects' },
-                { val: '9+',  lbl: 'Certifications' },
-                { val: '800+',lbl: 'Club Members Led' },
-                { val: '5yrs',lbl: 'Community Tutoring' },
+                { to: 5,   suffix: '+',   lbl: 'Shipped Projects' },
+                { to: 9,   suffix: '+',   lbl: 'Certifications' },
+                { to: 800, suffix: '+',   lbl: 'Club Members Led' },
+                { to: 5,   suffix: 'yrs', lbl: 'Community Tutoring' },
               ].map(s => (
-                <div key={s.lbl} className="stat-card">
-                  <span className="stat-card__val grad-text">{s.val}</span>
+                <motion.div key={s.lbl} className="stat-card" variants={fadeUp}>
+                  <span className="stat-card__val grad-text">
+                    <CountUp to={s.to} suffix={s.suffix} />
+                  </span>
                   <span className="stat-card__lbl">{s.lbl}</span>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -304,10 +391,16 @@ export default function App() {
       {/* ── Experience ── */}
       <section id="experience" className="section section--alt">
         <div className="container">
-          <h2 className="sec-title">Work <span className="grad-text">Experience</span></h2>
-          <div className="exp__list">
+          <Reveal><h2 className="sec-title">Work <span className="grad-text">Experience</span></h2></Reveal>
+          <motion.div
+            className="exp__list"
+            variants={stagger(0.13)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-60px' }}
+          >
             {EXPERIENCE.map((e, i) => (
-              <div key={i} className="exp-card">
+              <motion.div key={i} className="exp-card" variants={fadeUp}>
                 <div className="exp-card__left">
                   <span className={`exp-card__badge exp-card__badge--${e.type}`}>
                     {e.type === 'full-time' ? 'Full-Time' : 'Internship'}
@@ -322,19 +415,25 @@ export default function App() {
                     {e.points.map((pt, j) => <li key={j}>{pt}</li>)}
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── Projects ── */}
       <section id="projects" className="section">
         <div className="container">
-          <h2 className="sec-title">Featured <span className="grad-text">Projects</span></h2>
-          <div className="projects__grid">
+          <Reveal><h2 className="sec-title">Featured <span className="grad-text">Projects</span></h2></Reveal>
+          <motion.div
+            className="projects__grid"
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-60px' }}
+          >
             {PROJECTS.map(p => (
-              <div key={p.name} className="project-card">
+              <motion.div key={p.name} className="project-card" variants={fadeUp}>
                 <div className="project-card__top">
                   <span className="project-card__emoji">{p.emoji}</span>
                   <span className="project-card__period">{p.period}</span>
@@ -357,41 +456,55 @@ export default function App() {
                     </a>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── Skills ── */}
       <section id="skills" className="section section--alt">
         <div className="container">
-          <h2 className="sec-title">Technical <span className="grad-text">Skills</span></h2>
-          <div className="skills__grid">
+          <Reveal><h2 className="sec-title">Technical <span className="grad-text">Skills</span></h2></Reveal>
+          <motion.div
+            className="skills__grid"
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-60px' }}
+          >
             {Object.entries(SKILLS).map(([cat, items]) => (
-              <div key={cat} className="skill-box">
+              <motion.div key={cat} className="skill-box" variants={fadeUp}>
                 <h3 className="skill-box__cat">{cat}</h3>
                 <div className="skill-box__tags">
                   {items.map(s => <span key={s} className="skill-tag">{s}</span>)}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── Certifications ── */}
       <section id="certifications" className="section">
         <div className="container">
-          <h2 className="sec-title">My <span className="grad-text">Certifications</span></h2>
-          <p className="sec-sub">Click any card to view the certificate</p>
-          <div className="certs__grid">
+          <Reveal><h2 className="sec-title">My <span className="grad-text">Certifications</span></h2></Reveal>
+          <Reveal delay={0.05}><p className="sec-sub">Click any card to view the certificate</p></Reveal>
+          <motion.div
+            className="certs__grid"
+            variants={stagger(0.07)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-60px' }}
+          >
             {CERTS.map((c, i) => (
-              <button
+              <motion.button
                 key={i}
                 className="cert-card"
                 onClick={() => setActiveCert(c)}
                 style={{ '--ca': c.accent }}
+                variants={fadeUp}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
               >
                 <div className="cert-card__bar" />
                 <div className="cert-card__body">
@@ -401,27 +514,29 @@ export default function App() {
                   <p className="cert-card__date">{c.date}</p>
                 </div>
                 <span className="cert-card__cta">View →</span>
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── Contact ── */}
       <section id="contact" className="section section--alt">
         <div className="container">
-          <h2 className="sec-title">Get In <span className="grad-text">Touch</span></h2>
-          <p className="sec-sub">Open to opportunities, collaborations, and good conversations.</p>
-          <div className="contact__wrap">
-            <a href="mailto:frimpongmauricious@gmail.com" className="contact__email">
-              frimpongmauricious@gmail.com
-            </a>
-            <div className="contact__socials">
-              <a href="https://linkedin.com/in/mauricious-frimpong" target="_blank" rel="noreferrer" className="social-btn">LinkedIn</a>
-              <a href="https://github.com/FrimpongMauricious" target="_blank" rel="noreferrer" className="social-btn">GitHub</a>
-              <a href="https://youtube.com/@MAURICIOUSFRIMPONG" target="_blank" rel="noreferrer" className="social-btn">YouTube</a>
+          <Reveal><h2 className="sec-title">Get In <span className="grad-text">Touch</span></h2></Reveal>
+          <Reveal delay={0.05}><p className="sec-sub">Open to opportunities, collaborations, and good conversations.</p></Reveal>
+          <Reveal delay={0.1}>
+            <div className="contact__wrap">
+              <a href="mailto:frimpongmauricious@gmail.com" className="contact__email">
+                frimpongmauricious@gmail.com
+              </a>
+              <div className="contact__socials">
+                <a href="https://linkedin.com/in/mauricious-frimpong" target="_blank" rel="noreferrer" className="social-btn">LinkedIn</a>
+                <a href="https://github.com/FrimpongMauricious" target="_blank" rel="noreferrer" className="social-btn">GitHub</a>
+                <a href="https://youtube.com/@MAURICIOUSFRIMPONG" target="_blank" rel="noreferrer" className="social-btn">YouTube</a>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -430,34 +545,50 @@ export default function App() {
       </footer>
 
       {/* ── Certificate Modal ── */}
-      {activeCert && (
-        <div className="modal-overlay" onClick={() => setActiveCert(null)}>
-          <div className="modal" onClick={e => e.stopPropagation()}>
-            <div className="modal__header">
-              <div>
-                <h3 className="modal__title">{activeCert.title}</h3>
-                <p className="modal__issuer">{activeCert.issuer} &nbsp;·&nbsp; {activeCert.date}</p>
+      <AnimatePresence>
+        {activeCert && (
+          <motion.div
+            className="modal-overlay"
+            variants={overlayV}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            onClick={() => setActiveCert(null)}
+          >
+            <motion.div
+              className="modal"
+              variants={modalV}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="modal__header">
+                <div>
+                  <h3 className="modal__title">{activeCert.title}</h3>
+                  <p className="modal__issuer">{activeCert.issuer} &nbsp;·&nbsp; {activeCert.date}</p>
+                </div>
+                <button className="modal__close" onClick={() => setActiveCert(null)}>✕</button>
               </div>
-              <button className="modal__close" onClick={() => setActiveCert(null)}>✕</button>
-            </div>
-            <div className="modal__body">
-              {activeCert.type === 'pdf'
-                ? <object data={activeCert.file} type="application/pdf" className="modal__iframe">
-                    <div className="modal__pdf-fallback">
-                      <p>Your browser cannot display PDFs inline.</p>
-                      <a href={activeCert.file} target="_blank" rel="noreferrer" className="btn btn--ghost">Open PDF</a>
-                    </div>
-                  </object>
-                : <img src={activeCert.file} alt={activeCert.title} className="modal__img" />
-              }
-            </div>
-            <div className="modal__foot">
-              <a href={activeCert.file} target="_blank" rel="noreferrer" className="btn btn--ghost">Open in New Tab</a>
-              <a href={activeCert.file} download className="btn btn--primary">Download</a>
-            </div>
-          </div>
-        </div>
-      )}
+              <div className="modal__body">
+                {activeCert.type === 'pdf'
+                  ? <object data={activeCert.file} type="application/pdf" className="modal__iframe">
+                      <div className="modal__pdf-fallback">
+                        <p>Your browser cannot display PDFs inline.</p>
+                        <a href={activeCert.file} target="_blank" rel="noreferrer" className="btn btn--ghost">Open PDF</a>
+                      </div>
+                    </object>
+                  : <img src={activeCert.file} alt={activeCert.title} className="modal__img" />
+                }
+              </div>
+              <div className="modal__foot">
+                <a href={activeCert.file} target="_blank" rel="noreferrer" className="btn btn--ghost">Open in New Tab</a>
+                <a href={activeCert.file} download className="btn btn--primary">Download</a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
