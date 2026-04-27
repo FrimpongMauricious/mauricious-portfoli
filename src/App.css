@@ -442,6 +442,97 @@
   border-radius: 50px;
 }
 
+/* ── Experience ── */
+.exp__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 56px;
+}
+.exp-card {
+  background: var(--card);
+  border: 1px solid var(--cbord);
+  border-radius: var(--r);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  transition: border-color var(--ease);
+}
+.exp-card:hover { border-color: rgba(139, 92, 246, 0.25); }
+
+.exp-card__left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 2px;
+}
+.exp-card__badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 50px;
+  width: fit-content;
+}
+.exp-card__badge--full-time {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--pri);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+.exp-card__badge--internship {
+  background: rgba(6, 182, 212, 0.12);
+  color: var(--sec);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+}
+.exp-card__period {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.exp-card__location {
+  font-size: 12px;
+  color: var(--muted);
+  opacity: 0.7;
+}
+.exp-card__role {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--txt);
+  margin-bottom: 4px;
+}
+.exp-card__org {
+  font-size: 14px;
+  color: var(--pri);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.exp-card__points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.exp-card__points li {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  padding-left: 16px;
+  position: relative;
+}
+.exp-card__points li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--pri);
+  font-size: 11px;
+  top: 3px;
+}
+
 /* ── Projects ── */
 .projects__grid {
   display: grid;
@@ -454,6 +545,8 @@
   border: 1px solid var(--cbord);
   border-radius: var(--r);
   padding: 32px;
+  display: flex;
+  flex-direction: column;
   transition: transform var(--ease), border-color var(--ease), box-shadow var(--ease);
 }
 .project-card:hover {
@@ -461,28 +554,77 @@
   border-color: rgba(139, 92, 246, 0.3);
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3);
 }
-.project-card__emoji {
-  font-size: 2.5rem;
-  display: block;
+.project-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 16px;
+}
+.project-card__emoji {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+.project-card__period {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  text-align: right;
 }
 .project-card__name {
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--txt);
+  margin-bottom: 4px;
+}
+.project-card__sub {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pri);
   margin-bottom: 12px;
+  opacity: 0.85;
 }
 .project-card__desc {
   color: var(--muted);
   font-size: 14px;
   line-height: 1.75;
   margin-bottom: 20px;
+  flex: 1;
 }
 .project-card__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 16px;
+}
+.project-card__links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+.proj-link {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all var(--ease);
+  font-family: inherit;
+}
+.proj-link--live {
+  background: var(--grad);
+  color: #fff;
+}
+.proj-link--live:hover { opacity: 0.85; }
+.proj-link--gh {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--cbord);
+  color: var(--txt);
+}
+.proj-link--gh:hover {
+  border-color: var(--pri);
+  color: var(--pri);
 }
 .project-tag {
   background: rgba(6, 182, 212, 0.08);
@@ -546,6 +688,12 @@
 .cert-card__issuer {
   font-size: 12px;
   color: var(--muted);
+  margin-bottom: 4px;
+}
+.cert-card__date {
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.6;
 }
 .cert-card__cta {
   display: block;
@@ -727,6 +875,18 @@
   .hero__glow--2 { width: 240px; height: 240px; right: -5%; }
 
   .about__grid { grid-template-columns: 1fr; gap: 40px; }
+
+  .exp-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .exp-card__left {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .exp-card__location { display: none; }
 
   .skills__grid { grid-template-columns: repeat(2, 1fr); }
 
