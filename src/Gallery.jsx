@@ -38,7 +38,6 @@ import wa5502                from './assets/gallery/WhatsApp Image 2026-05-01 at
 import wa5701                from './assets/gallery/WhatsApp Image 2026-05-01 at 01.30.57 (1).jpeg'
 
 // ── Videos ──────────────────────────────────────────────────────────────────
-import nsmqCaptain        from './assets/gallery/NSMQ captain.mp4'
 import wonProgrammerYear  from './assets/gallery/won the programmer of the year.mp4'
 
 // ── Animation variants ───────────────────────────────────────────────────────
@@ -89,7 +88,6 @@ export const GALLERY = [
   // Leadership
   { src: claudeBuilderClub,  title: 'Claude Builder Club — Project Coordinator',        caption: 'Leading the Claude Builder Club at KNUST · 800+ student community', type: 'image', tag: 'Leadership' },
   { src: quizTeam,           title: 'KNUST Quiz Team',                                  caption: 'Group photo with the quiz team',                                    type: 'image', tag: 'Leadership' },
-  { src: nsmqCaptain,        title: 'NSMQ Captain',                                     caption: 'Serving as NSMQ team captain',                                      type: 'video', tag: 'Leadership' },
 
   // Community
   { src: sundaySchool,       title: 'Sunday School Teacher',                            caption: 'Volunteering as a Sunday school teacher in the community',  type: 'image', tag: 'Community' },
@@ -180,8 +178,8 @@ export default function Gallery({ onBack }) {
                   onClick={() => setIdx(i)}
                 >
                   {item.type === 'image'
-                    ? <img src={item.src} alt={item.title} className="gallery-card__media" />
-                    : <video src={item.src} className="gallery-card__media" preload="metadata" muted playsInline />
+                    ? <img src={item.src} alt={item.title} className="gallery-card__media" loading="lazy" />
+                    : <video src={item.src} className="gallery-card__media" preload="none" muted playsInline />
                   }
                   <div className="gallery-card__overlay">
                     <span className="gallery-card__tag">{item.tag}</span>
