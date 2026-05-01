@@ -1,5 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useMotionValue, animate, useInView } from 'framer-motion'
+import {
+  FaGraduationCap, FaRobot, FaChurch, FaSeedling, FaBookOpen,
+  FaExternalLinkAlt, FaGithub, FaLinkedinIn, FaYoutube,
+  FaArrowRight, FaTimes, FaBriefcase, FaUserGraduate,
+  FaEnvelope, FaMapMarkerAlt, FaCalendarAlt, FaCertificate,
+} from 'react-icons/fa'
 import heroImg from './assets/hero.png'
 import passportImg from './assets/maur_passport_picture.jpeg'
 import googleITCert   from './assets/Google_IT_Support_cert.pdf'
@@ -119,7 +125,7 @@ const PROJECTS = [
     tags: ['React', 'AI', 'Real-time'],
     live: 'https://elevatehub.guru',
     github: null,
-    emoji: '🎓',
+    icon: FaGraduationCap,
     period: 'Nov 2025 – Jan 2026',
   },
   {
@@ -129,7 +135,7 @@ const PROJECTS = [
     tags: ['Python', 'Flask', 'PostgreSQL', 'OpenAI API'],
     live: 'https://sales-manager-rb3h.onrender.com',
     github: 'https://github.com/FrimpongMauricious/point-of-sales',
-    emoji: '🤖',
+    icon: FaRobot,
     period: 'Mar 2026 – Apr 2026',
   },
   {
@@ -139,7 +145,7 @@ const PROJECTS = [
     tags: ['Spring Boot', 'PostgreSQL', 'Mobile'],
     live: null,
     github: 'https://github.com/FrimpongMauricious/KOINONIA',
-    emoji: '✝️',
+    icon: FaChurch,
     period: 'Feb 2026 – Jun 2026',
   },
   {
@@ -149,7 +155,7 @@ const PROJECTS = [
     tags: ['HTML/CSS', 'WebSockets', 'Paystack'],
     live: 'https://backend-mkvk.onrender.com',
     github: 'https://github.com/AgriHub-group32/frontend',
-    emoji: '🌾',
+    icon: FaSeedling,
     period: 'Feb 2026 – Mar 2026',
   },
   {
@@ -159,7 +165,7 @@ const PROJECTS = [
     tags: ['React Native', 'Spring Boot'],
     live: null,
     github: 'https://github.com/FrimpongMauricious/group37ApexLearn',
-    emoji: '📚',
+    icon: FaBookOpen,
     period: 'July 2025',
   },
 ]
@@ -426,10 +432,10 @@ export default function App() {
               <motion.div key={i} className="exp-card" variants={fadeUp}>
                 <div className="exp-card__left">
                   <span className={`exp-card__badge exp-card__badge--${e.type}`}>
-                    {e.type === 'full-time' ? 'Full-Time' : 'Internship'}
+                    {e.type === 'full-time' ? <><FaBriefcase /> Full-Time</> : <><FaUserGraduate /> Internship</>}
                   </span>
-                  <span className="exp-card__period">{e.period}</span>
-                  <span className="exp-card__location">{e.location}</span>
+                  <span className="exp-card__period"><FaCalendarAlt /> {e.period}</span>
+                  <span className="exp-card__location"><FaMapMarkerAlt /> {e.location}</span>
                 </div>
                 <div className="exp-card__right">
                   <h3 className="exp-card__role">{e.role}</h3>
@@ -458,7 +464,7 @@ export default function App() {
             {PROJECTS.map(p => (
               <motion.div key={p.name} className="project-card" variants={fadeUp}>
                 <div className="project-card__top">
-                  <span className="project-card__emoji">{p.emoji}</span>
+                  <span className="project-card__icon"><p.icon /></span>
                   <span className="project-card__period">{p.period}</span>
                 </div>
                 <h3 className="project-card__name">{p.name}</h3>
@@ -470,12 +476,12 @@ export default function App() {
                 <div className="project-card__links">
                   {p.live && (
                     <a href={p.live} target="_blank" rel="noreferrer" className="proj-link proj-link--live">
-                      Live ↗
+                      <FaExternalLinkAlt /> Live
                     </a>
                   )}
                   {p.github && (
                     <a href={p.github} target="_blank" rel="noreferrer" className="proj-link proj-link--gh">
-                      GitHub ↗
+                      <FaGithub /> GitHub
                     </a>
                   )}
                 </div>
@@ -531,12 +537,12 @@ export default function App() {
               >
                 <div className="cert-card__bar" />
                 <div className="cert-card__body">
-                  <span className="cert-card__badge">CERTIFIED</span>
+                  <span className="cert-card__badge"><FaCertificate /> CERTIFIED</span>
                   <h3 className="cert-card__title">{c.title}</h3>
                   <p className="cert-card__issuer">{c.issuer}</p>
                   <p className="cert-card__date">{c.date}</p>
                 </div>
-                <span className="cert-card__cta">View →</span>
+                <span className="cert-card__cta">View <FaArrowRight /></span>
               </motion.button>
             ))}
           </motion.div>
@@ -551,12 +557,12 @@ export default function App() {
           <Reveal delay={0.1}>
             <div className="contact__wrap">
               <a href="mailto:frimpongmauricious@gmail.com" className="contact__email">
-                frimpongmauricious@gmail.com
+                <FaEnvelope /> frimpongmauricious@gmail.com
               </a>
               <div className="contact__socials">
-                <a href="https://linkedin.com/in/mauricious-frimpong" target="_blank" rel="noreferrer" className="social-btn">LinkedIn</a>
-                <a href="https://github.com/FrimpongMauricious" target="_blank" rel="noreferrer" className="social-btn">GitHub</a>
-                <a href="https://youtube.com/@MAURICIOUSFRIMPONG" target="_blank" rel="noreferrer" className="social-btn">YouTube</a>
+                <a href="https://linkedin.com/in/mauricious-frimpong" target="_blank" rel="noreferrer" className="social-btn"><FaLinkedinIn /> LinkedIn</a>
+                <a href="https://github.com/FrimpongMauricious" target="_blank" rel="noreferrer" className="social-btn"><FaGithub /> GitHub</a>
+                <a href="https://youtube.com/@MAURICIOUSFRIMPONG" target="_blank" rel="noreferrer" className="social-btn"><FaYoutube /> YouTube</a>
               </div>
             </div>
           </Reveal>
@@ -591,7 +597,7 @@ export default function App() {
                   <h3 className="modal__title">{activeCert.title}</h3>
                   <p className="modal__issuer">{activeCert.issuer} &nbsp;·&nbsp; {activeCert.date}</p>
                 </div>
-                <button className="modal__close" onClick={() => setActiveCert(null)}>✕</button>
+                <button className="modal__close" onClick={() => setActiveCert(null)}><FaTimes /></button>
               </div>
               <div className="modal__body">
                 {activeCert.type === 'pdf'
