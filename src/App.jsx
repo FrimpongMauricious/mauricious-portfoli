@@ -9,6 +9,8 @@ import {
 import Gallery from './Gallery'
 import heroImg from './assets/hero.png'
 import passportImg from './assets/maur_passport_picture.jpeg'
+import programmerCert from './assets/programmer of the year certficate.jpg'
+import mentorshipCert from './assets/mentorship certification.jpg'
 import googleITCert   from './assets/Google_IT_Support_cert.pdf'
 import itSecurityCert from './assets/IT_security_cert.pdf'
 import knustAICert    from './assets/KNUST_AI certificate.pdf'
