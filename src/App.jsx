@@ -96,11 +96,11 @@ const EXPERIENCE = [
     org: 'Lobi — Natura Corporation',
     location: 'North Legon, Accra, Ghana',
     period: 'March 2026 – Present',
-    type: 'full-time',
+    type: 'contract',
     points: [
-      'Lead a cross-functional engineering team of five, overseeing recruitment, task allocation, and delivery timelines for a ride-hailing mobile platform.',
-      'Architected the technology stack: React Native (mobile), Spring Boot (backend), Python (tooling), Google Maps Platform (geolocation/routing), Paystack (payments).',
-      'Additionally maintain the Natura Corporation corporate website (naturacorporation.com).',
+      'Served as CTO during the development of Lobi, a ride-hailing platform under Natura Corporation, leading a cross-functional engineering team of five.',
+      'Architected the full technology stack: React Native (mobile), Spring Boot (backend), Python (tooling), Google Maps Platform (geolocation/routing), Paystack (payments).',
+      'Additionally maintained the Natura Corporation corporate website (naturacorporation.com).',
     ],
   },
   {
@@ -432,7 +432,9 @@ export default function App() {
               <motion.div key={i} className="exp-card" variants={fadeUp}>
                 <div className="exp-card__left">
                   <span className={`exp-card__badge exp-card__badge--${e.type}`}>
-                    {e.type === 'full-time' ? <><FaBriefcase /> Full-Time</> : <><FaUserGraduate /> Internship</>}
+                    {e.type === 'full-time'  ? <><FaBriefcase /> Full-Time</> :
+                     e.type === 'contract'   ? <><FaBriefcase /> Contract / Project</> :
+                                              <><FaUserGraduate /> Internship</>}
                   </span>
                   <span className="exp-card__period"><FaCalendarAlt /> {e.period}</span>
                   <span className="exp-card__location"><FaMapMarkerAlt /> {e.location}</span>
