@@ -560,7 +560,7 @@ export default function App() {
                 <FaEnvelope /> frimpongmauricious@gmail.com
               </a>
               <div className="contact__socials">
-                <a href="https://linkedin.com/in/mauricious-frimpong" target="_blank" rel="noreferrer" className="social-btn"><FaLinkedinIn /> LinkedIn</a>
+                <a href="https://www.linkedin.com/in/mauricious-frimpong" target="_blank" rel="noreferrer" className="social-btn"><FaLinkedinIn /> LinkedIn</a>
                 <a href="https://github.com/FrimpongMauricious" target="_blank" rel="noreferrer" className="social-btn"><FaGithub /> GitHub</a>
                 <a href="https://youtube.com/@MAURICIOUSFRIMPONG" target="_blank" rel="noreferrer" className="social-btn"><FaYoutube /> YouTube</a>
               </div>
