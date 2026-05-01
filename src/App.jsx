@@ -350,17 +350,7 @@ export default function App() {
       </motion.nav>
 
       {/* ── Page content ── */}
-      <AnimatePresence mode="wait">
-        {page === 'gallery' ? (
-          <Gallery key="gallery" onBack={goHome} />
-        ) : (
-          <motion.div
-            key="home"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
+      {page === 'gallery' ? <Gallery onBack={goHome} /> : <>
 
       {/* ── Hero ── */}
       <section id="hero" className="hero">
@@ -661,9 +651,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </>}
     </div>
   )
 }
