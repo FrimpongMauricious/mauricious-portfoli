@@ -6,6 +6,7 @@ import {
   FaArrowRight, FaTimes, FaBriefcase, FaUserGraduate,
   FaEnvelope, FaMapMarkerAlt, FaCalendarAlt, FaCertificate,
 } from 'react-icons/fa'
+import Gallery from './Gallery'
 import heroImg from './assets/hero.png'
 import passportImg from './assets/maur_passport_picture.jpeg'
 import googleITCert   from './assets/Google_IT_Support_cert.pdf'
@@ -15,8 +16,6 @@ import cppCert        from './assets/c++ certificate from udemy.pdf'
 import cloudCert      from './assets/cloud_computing_certification.pdf'
 import osCert         from './assets/operating_system_certificate.pdf'
 import pythonCert     from './assets/python_cert_from_devtownn.pdf'
-import mentorshipCert from './assets/mentorship certification.jpg'
-import programmerCert from './assets/programmer of the year certficate.jpg'
 import './App.css'
 
 /* ── Animation variants ── */
@@ -79,7 +78,7 @@ function CountUp({ to, suffix = '', duration = 1.8 }) {
   return <span ref={ref}>{display}{suffix}</span>
 }
 
-const NAV = ['About', 'Experience', 'Projects', 'Skills', 'Certifications', 'Contact']
+const NAV = ['About', 'Experience', 'Projects', 'Skills', 'Certifications', 'Gallery', 'Contact']
 
 const SKILLS = {
   Languages:            ['Python', 'Java', 'JavaScript', 'C', 'C++', 'Dart'],
@@ -248,6 +247,7 @@ const CERTS = [
 export default function App() {
   const [menuOpen, setMenuOpen]     = useState(false)
   const [activeCert, setActiveCert] = useState(null)
+  const [page, setPage]             = useState('home')
   const [scrolled, setScrolled]     = useState(false)
 
   useEffect(() => {
@@ -283,8 +283,22 @@ export default function App() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen, activeCert])
 
+  const goToGallery = () => {
+    setPage('gallery')
+    setMenuOpen(false)
+    window.scrollTo(0, 0)
+  }
+
+  const goHome = () => {
+    setPage('home')
+    window.scrollTo(0, 0)
+  }
+
   const scrollTo = (id) => {
-    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })
+    if (page !== 'home') setPage('home')
+    setTimeout(() => {
+      document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })
+    }, page !== 'home' ? 100 : 0)
     setMenuOpen(false)
   }
 
@@ -299,12 +313,19 @@ export default function App() {
         animate="show"
       >
         <div className="nav__inner">
-          <button className="nav__logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <button className="nav__logo" onClick={goHome}>
             MF<span className="nav__dot">.</span>
           </button>
           <ul className="nav__links">
             {NAV.map(l => (
-              <li key={l}><button onClick={() => scrollTo(l)}>{l}</button></li>
+              <li key={l}>
+                <button
+                  className={l === 'Gallery' ? 'nav__gallery-btn' : ''}
+                  onClick={() => l === 'Gallery' ? goToGallery() : scrollTo(l)}
+                >
+                  {l}
+                </button>
+              </li>
             ))}
           </ul>
           <button
@@ -317,10 +338,29 @@ export default function App() {
         </div>
         <div className={`nav__mobile${menuOpen ? ' open' : ''}`}>
           {NAV.map(l => (
-            <button key={l} onClick={() => scrollTo(l)}>{l}</button>
+            <button
+              key={l}
+              className={l === 'Gallery' ? 'nav__gallery-btn' : ''}
+              onClick={() => l === 'Gallery' ? goToGallery() : scrollTo(l)}
+            >
+              {l}
+            </button>
           ))}
         </div>
       </motion.nav>
+
+      {/* ── Page content ── */}
+      <AnimatePresence mode="wait">
+        {page === 'gallery' ? (
+          <Gallery key="gallery" onBack={goHome} />
+        ) : (
+          <motion.div
+            key="home"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
 
       {/* ── Hero ── */}
       <section id="hero" className="hero">
@@ -617,6 +657,10 @@ export default function App() {
                 <a href={activeCert.file} download className="btn btn--primary">Download</a>
               </div>
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
           </motion.div>
         )}
       </AnimatePresence>
