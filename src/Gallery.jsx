@@ -39,6 +39,7 @@ import wa5701                from './assets/gallery/WhatsApp Image 2026-05-01 at
 
 // ── Videos ──────────────────────────────────────────────────────────────────
 import wonProgrammerYear  from './assets/gallery/won the programmer of the year.mp4'
+import nsmqOnStage        from './assets/gallery/sitting on stage at NSMQ.mp4'
 
 // ── Animation variants ───────────────────────────────────────────────────────
 const fadeUp = {
@@ -88,6 +89,7 @@ export const GALLERY = [
   // Leadership
   { src: claudeBuilderClub,  title: 'Claude Builder Club — Project Coordinator',        caption: 'Leading the Claude Builder Club at KNUST · 800+ student community', type: 'image', tag: 'Leadership' },
   { src: quizTeam,           title: 'KNUST Quiz Team',                                  caption: 'Group photo with the quiz team',                                    type: 'image', tag: 'Leadership' },
+  { src: nsmqOnStage,        title: 'Sitting on Stage at NSMQ',                         caption: 'Serving as Quiz Captain on the NSMQ stage',                         type: 'video', tag: 'Leadership' },
 
   // Community
   { src: sundaySchool,       title: 'Sunday School Teacher',                            caption: 'Volunteering as a Sunday school teacher in the community',  type: 'image', tag: 'Community' },
