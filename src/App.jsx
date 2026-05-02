@@ -93,15 +93,13 @@ const SKILLS = {
 
 const EXPERIENCE = [
   {
-    role: 'Chief Technology Officer',
-    org: 'Lobi — Natura Corporation',
+    role: 'Web Developer',
+    org: 'Natura Corporation',
     location: 'North Legon, Accra, Ghana',
     period: 'March 2026 – Present',
     type: 'contract',
     points: [
-      'Served as CTO during the development of Lobi, a ride-hailing platform under Natura Corporation, leading a cross-functional engineering team of five.',
-      'Architected the full technology stack: React Native (mobile), Spring Boot (backend), Python (tooling), Google Maps Platform (geolocation/routing), Paystack (payments).',
-      'Additionally maintained the Natura Corporation corporate website (naturacorporation.com).',
+      'Maintained and updated the Natura Corporation corporate website (naturacorporation.com), ensuring uptime, content accuracy, and a polished user experience.',
     ],
   },
   {
@@ -367,7 +365,7 @@ export default function App() {
           >
             <motion.span className="hero__badge" variants={fadeUp}>
               <span className="hero__badge-dot" />
-              CTO at Lobi &nbsp;·&nbsp; Open to opportunities
+              Open to opportunities
             </motion.span>
             <motion.p className="hero__greeting" variants={fadeUp}>Hello, I'm</motion.p>
             <motion.h1 className="hero__name" variants={fadeUp}>
@@ -407,9 +405,7 @@ export default function App() {
               <div className="about__bio">
                 <p>
                   I'm a <strong>Computer Science undergraduate at KNUST, Ghana</strong>, pursuing First Class
-                  Honours, with a proven record of building real-world software that ships. I currently serve
-                  as <strong>Chief Technology Officer of Lobi</strong>, a ride-hailing platform under Natura
-                  Corporation, where I lead a team of five engineers.
+                  Honours, with a proven record of building real-world software that ships.
                 </p>
                 <p>
                   Recognised as <strong>Male Programmer of the Year (2024/2025)</strong> by the KNUST
