@@ -37,6 +37,20 @@ import wa5501                from './assets/gallery/WhatsApp Image 2026-05-01 at
 import wa5502                from './assets/gallery/WhatsApp Image 2026-05-01 at 01.30.55 (2).jpeg'
 import wa5701                from './assets/gallery/WhatsApp Image 2026-05-01 at 01.30.57 (1).jpeg'
 
+// ── VoiceUp Hackathon (Claude Builders Club × Anthropic × KNUST AI) ─────────
+import voiceupDebugging       from './assets/gallery/Debugging_project.jpg'
+import voiceupTeammates       from './assets/gallery/with_my_teamMates.jpg'
+import voiceupSoloShot        from './assets/gallery/single_shot_at_hackathon.jpg'
+import voiceupGroupApex       from './assets/gallery/group_pic_with_apex404.jpg'
+import voiceupJudges          from './assets/gallery/with_the_judges.jpg'
+import voiceupChristabel      from './assets/gallery/with_my_female_friend_Christabel.jpg'
+import voiceupKelvin          from './assets/gallery/with_my_friend_kelvin.jpg'
+import voiceupAmbassador      from './assets/gallery/with_the_club_ambassador.jpg'
+import voiceupMedal           from './assets/gallery/receiving_medal_after_winning.jpg'
+import voiceupTeamMedal       from './assets/gallery/group_team_with_the_medal.jpg'
+import voiceupTeamName        from './assets/gallery/group_pic_showing_ourTeam_name.jpg'
+import voiceupAllWinners      from './assets/gallery/pic_with_the_entire_winners.jpg'
+
 // ── Videos ──────────────────────────────────────────────────────────────────
 import wonProgrammerYear  from './assets/gallery/won the programmer of the year.mp4'
 import nsmqOnStage        from './assets/gallery/sitting on stage at NSMQ.mp4'
@@ -71,12 +85,28 @@ export const GALLERY = [
   { src: wa5501,              title: 'Programmer of the Year Ceremony',                  caption: 'Award ceremony · KNUST Department of Computer Science, 2025',   type: 'image', tag: 'Achievement' },
   { src: wa5502,              title: 'Programmer of the Year Ceremony',                  caption: 'Award ceremony · KNUST Department of Computer Science, 2025',   type: 'image', tag: 'Achievement' },
   { src: wa5701,              title: 'Programmer of the Year Ceremony',                  caption: 'Award ceremony · KNUST Department of Computer Science, 2025',   type: 'image', tag: 'Achievement' },
+  { src: voiceupMedal,       title: 'VoiceUp — Hackathon Win',                           caption: 'Receiving the winner\'s medal · Claude Builders Club Hackathon powered by Anthropic & KNUST AI · 2026', type: 'image', tag: 'Achievement' },
+  { src: voiceupTeamMedal,   title: 'Team Apex-404 — Hackathon Winners',                 caption: 'Claude Builders Club Hackathon · KNUST, 2026',                   type: 'image', tag: 'Achievement' },
 
   // Certificates
   { src: programmerCert,     title: 'Male Programmer of the Year Certificate',           caption: 'Officially awarded by KNUST Dept. of Computer Science · 2024/2025', type: 'image', tag: 'Certificate' },
   { src: mentorshipCert,     title: 'Mentorship Certificate of Appreciation',             caption: 'Computer Science Society, KNUST · 2025',                            type: 'image', tag: 'Certificate' },
 
-  // Hackathons
+  // Hackathons — VoiceUp · Claude Builders Club Hackathon (Anthropic × KNUST AI)
+  { src: voiceupMedal,       title: 'Receiving the Winner\'s Medal — VoiceUp',          caption: 'Claude Builders Club Hackathon powered by Anthropic & KNUST AI · 2026', type: 'image', tag: 'Hackathon' },
+  { src: voiceupTeamMedal,   title: 'Team Apex-404 with the Medal',                     caption: 'VoiceUp — Claude Builders Club Hackathon · KNUST, 2026',                type: 'image', tag: 'Hackathon' },
+  { src: voiceupTeamName,    title: 'Team Apex-404',                                    caption: 'VoiceUp — Claude Builders Club Hackathon · KNUST, 2026',                type: 'image', tag: 'Hackathon' },
+  { src: voiceupAllWinners,  title: 'All Winners — Claude Builders Club Hackathon',     caption: 'Claude Builders Club Hackathon powered by Anthropic & KNUST AI · 2026', type: 'image', tag: 'Hackathon' },
+  { src: voiceupGroupApex,   title: 'Group Photo — Team Apex-404',                      caption: 'VoiceUp hackathon team photo · KNUST, 2026',                            type: 'image', tag: 'Hackathon' },
+  { src: voiceupJudges,      title: 'With the Judges',                                  caption: 'Post-pitch with the panel of judges · VoiceUp Hackathon, 2026',         type: 'image', tag: 'Hackathon' },
+  { src: voiceupAmbassador,  title: 'With the Club Ambassador',                         caption: 'Claude Builders Club · KNUST, 2026',                                    type: 'image', tag: 'Hackathon' },
+  { src: voiceupTeammates,   title: 'With My Teammates',                                caption: 'Building VoiceUp together · Claude Builders Club Hackathon, 2026',      type: 'image', tag: 'Hackathon' },
+  { src: voiceupDebugging,   title: 'Debugging the Project',                            caption: 'In the zone — debugging VoiceUp during the hackathon',                  type: 'image', tag: 'Hackathon' },
+  { src: voiceupSoloShot,    title: 'Solo Shot at the Hackathon',                       caption: 'Claude Builders Club Hackathon · KNUST, 2026',                          type: 'image', tag: 'Hackathon' },
+  { src: voiceupChristabel,  title: 'With Christabel',                                  caption: 'At the Claude Builders Club Hackathon · KNUST, 2026',                   type: 'image', tag: 'Hackathon' },
+  { src: voiceupKelvin,      title: 'With Kelvin',                                      caption: 'At the Claude Builders Club Hackathon · KNUST, 2026',                   type: 'image', tag: 'Hackathon' },
+
+  // Hackathons — other
   { src: soloFOW,            title: 'Solo Presentation — Future of Work Hackathon',     caption: 'Pitching solo at the FOW Hackathon',              type: 'image', tag: 'Hackathon' },
   { src: presentingFOW,      title: 'Presenting at Future of Work Hackathon',            caption: 'Team presentation at the FOW Hackathon',          type: 'image', tag: 'Hackathon' },
   { src: presentingChristabell, title: 'Presenting with Christabell',                   caption: 'Joint presentation at a hackathon event',         type: 'image', tag: 'Hackathon' },
