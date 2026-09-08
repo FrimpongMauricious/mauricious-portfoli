@@ -1036,6 +1036,14 @@
   margin: 0;
   line-height: 1.4;
 }
+.gallery-card__pdf-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(139,92,246,0.18), rgba(6,182,212,0.12));
+  color: var(--pri);
+  font-size: 44px;
+}
 .gallery-card__icon {
   position: absolute;
   top: 12px;
@@ -1094,6 +1102,12 @@
   border: none;
   display: block;
   background: #000;
+}
+.lightbox__pdf {
+  width: 100%;
+  height: 65vh;
+  border: none;
+  display: block;
 }
 .lightbox__nav {
   display: flex;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  FaTimes, FaChevronLeft, FaChevronRight, FaExpand, FaPlay, FaArrowLeft,
+  FaTimes, FaChevronLeft, FaChevronRight, FaExpand, FaPlay, FaArrowLeft, FaFilePdf,
 } from 'react-icons/fa'
 
 // ── Images ──────────────────────────────────────────────────────────────────
@@ -51,6 +51,20 @@ import voiceupTeamMedal       from './assets/gallery/group_team_with_the_medal.j
 import voiceupTeamName        from './assets/gallery/group_pic_showing_ourTeam_name.jpg'
 import voiceupAllWinners      from './assets/gallery/pic_with_the_entire_winners.jpg'
 
+// ── AmaliTech Immersive Internship Programme ─────────────────────────────────
+import amalitechOfferLetter from './assets/Mauricious Frimpong_AmaliTech_IIP_Offer_signed.pdf'
+import amalitechSoloOffice  from './assets/gallery/solo_pic_at_amalitech_office_in Kumasi_as_intern.jpg'
+import amalitechWithAddison from './assets/gallery/picture_with_me_and_addison_at_amalitech_internship.jpg'
+import amalitechRandomPic   from './assets/gallery/random_pic_at_amalitech.jpg'
+import amalitechCoreValues  from './assets/gallery/solo_standing_pick_facing_core_values_of_amalitech.jpg'
+
+// ── Execute Africa AI Challenge Hackathon (Vector AI Africa Week) ───────────
+import execAfricaTeammate   from './assets/gallery/picture_with_my_teammate_at_execute_africa_ai_hackathon.jpg'
+import execAfricaPresenting from './assets/gallery/presenting_to_the_judges_at_execute_africa_ai_challenge_hackathon.jpg'
+import execAfricaAlxLogo    from './assets/gallery/solo_pick_at_execute_africa_ai_hackathon_facing_the_alx_logo.jpg'
+import execAfricaSoloRandom from './assets/gallery/solo_random_pic_at_hackathon_execute_africa_ai.jpg'
+import execAfricaOrganiser  from './assets/gallery/video_of_the organiser_giving_instructions_of_execute_africa_hackathon.mp4'
+
 // ── Videos ──────────────────────────────────────────────────────────────────
 import wonProgrammerYear  from './assets/gallery/won the programmer of the year.mp4'
 import nsmqOnStage        from './assets/gallery/sitting on stage at NSMQ.mp4'
@@ -87,6 +101,7 @@ export const GALLERY = [
   { src: wa5701,              title: 'Programmer of the Year Ceremony',                  caption: 'Award ceremony · KNUST Department of Computer Science, 2025',   type: 'image', tag: 'Achievement' },
   { src: voiceupMedal,       title: 'VoiceUp — Hackathon Win',                           caption: 'Receiving the winner\'s medal · Claude Builders Club Hackathon powered by Anthropic & KNUST AI · 2026', type: 'image', tag: 'Achievement' },
   { src: voiceupTeamMedal,   title: 'Team Apex-404 — Hackathon Winners',                 caption: 'Claude Builders Club Hackathon · KNUST, 2026',                   type: 'image', tag: 'Achievement' },
+  { src: execAfricaPresenting, title: 'Execute Africa AI Challenge Hackathon — Finalist', caption: 'Team project selected for the final stage · Vector AI Africa Week, Palm Eagles Hotel, Accra · Sept 2026', type: 'image', tag: 'Achievement' },
 
   // Certificates
   { src: programmerCert,     title: 'Male Programmer of the Year Certificate',           caption: 'Officially awarded by KNUST Dept. of Computer Science · 2024/2025', type: 'image', tag: 'Certificate' },
@@ -105,6 +120,20 @@ export const GALLERY = [
   { src: voiceupSoloShot,    title: 'Solo Shot at the Hackathon',                       caption: 'Claude Builders Club Hackathon · KNUST, 2026',                          type: 'image', tag: 'Hackathon' },
   { src: voiceupChristabel,  title: 'With Christabel',                                  caption: 'At the Claude Builders Club Hackathon · KNUST, 2026',                   type: 'image', tag: 'Hackathon' },
   { src: voiceupKelvin,      title: 'With Kelvin',                                      caption: 'At the Claude Builders Club Hackathon · KNUST, 2026',                   type: 'image', tag: 'Hackathon' },
+
+  // Hackathons — Execute Africa AI Challenge Hackathon (Vector AI Africa Week) — Finalist
+  { src: execAfricaTeammate,   title: 'Picture With My Teammate at Execute Africa AI Hackathon',                caption: 'Execute Africa AI Challenge Hackathon · Palm Eagles Hotel, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfricaPresenting, title: 'Presenting to the Judges at Execute Africa AI Challenge Hackathon',      caption: 'Pitching our finalist project · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfricaAlxLogo,    title: 'Solo Pic at Execute Africa AI Hackathon Facing the ALX Logo',            caption: 'Execute Africa AI Challenge Hackathon · Palm Eagles Hotel, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfricaSoloRandom, title: 'Solo Random Pic at the Execute Africa AI Hackathon',                     caption: 'Execute Africa AI Challenge Hackathon · Palm Eagles Hotel, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfricaOrganiser,  title: 'Organiser Giving Instructions at the Execute Africa Hackathon',          caption: 'Briefing before the pitch session · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'video', tag: 'Hackathon' },
+
+  // AmaliTech Immersive Internship Programme — Offer Accepted (Front End Developer Intern, React Native track)
+  { src: amalitechOfferLetter, title: 'AmaliTech Immersive Internship Programme — Offer Accepted', caption: 'Offer of admission after HR screening, a CodeSignal assessment, and a behavioral + technical interview · Front End Developer Intern (React Native track), Kumasi · Started 7 Sept 2026', type: 'pdf', tag: 'Achievement' },
+  { src: amalitechSoloOffice,  title: 'Solo Pic at AmaliTech Office in Kumasi as Intern',        caption: 'On-site at the AmaliTech office · Kumasi, Ghana · Sept 2026',    type: 'image', tag: 'Achievement' },
+  { src: amalitechWithAddison, title: 'Picture With Me and Addison at AmaliTech Internship',     caption: 'AmaliTech Immersive Internship Programme · Kumasi, Ghana · Sept 2026', type: 'image', tag: 'Achievement' },
+  { src: amalitechRandomPic,   title: 'Random Pic at AmaliTech',                                 caption: 'AmaliTech Immersive Internship Programme · Kumasi, Ghana · Sept 2026', type: 'image', tag: 'Achievement' },
+  { src: amalitechCoreValues,  title: 'Solo Standing Pic Facing Core Values of AmaliTech',       caption: 'AmaliTech Immersive Internship Programme · Kumasi, Ghana · Sept 2026', type: 'image', tag: 'Achievement' },
 
   // Hackathons — other
   { src: soloFOW,            title: 'Solo Presentation — Future of Work Hackathon',     caption: 'Pitching solo at the FOW Hackathon',              type: 'image', tag: 'Hackathon' },
@@ -211,13 +240,15 @@ export default function Gallery({ onBack }) {
                 >
                   {item.type === 'image'
                     ? <img src={item.src} alt={item.title} className="gallery-card__media" loading="lazy" />
-                    : <video src={item.src} className="gallery-card__media" preload="none" muted playsInline />
+                    : item.type === 'video'
+                    ? <video src={item.src} className="gallery-card__media" preload="none" muted playsInline />
+                    : <div className="gallery-card__media gallery-card__pdf-thumb"><FaFilePdf /></div>
                   }
                   <div className="gallery-card__overlay">
                     <span className="gallery-card__tag">{item.tag}</span>
                     <p className="gallery-card__title">{item.title}</p>
                     <span className="gallery-card__icon">
-                      {item.type === 'video' ? <FaPlay /> : <FaExpand />}
+                      {item.type === 'video' ? <FaPlay /> : item.type === 'pdf' ? <FaFilePdf /> : <FaExpand />}
                     </span>
                   </div>
                 </motion.div>
@@ -256,7 +287,16 @@ export default function Gallery({ onBack }) {
               <div className="lightbox__body">
                 {filtered[idx].type === 'image'
                   ? <img src={filtered[idx].src} alt={filtered[idx].title} className="lightbox__img" />
-                  : <video src={filtered[idx].src} className="lightbox__video" controls autoPlay />
+                  : filtered[idx].type === 'video'
+                  ? <video src={filtered[idx].src} className="lightbox__video" controls autoPlay />
+                  : (
+                    <object data={filtered[idx].src} type="application/pdf" className="lightbox__pdf">
+                      <div className="modal__pdf-fallback">
+                        <p>Your browser cannot display PDFs inline.</p>
+                        <a href={filtered[idx].src} target="_blank" rel="noreferrer" className="btn btn--ghost">Open PDF</a>
+                      </div>
+                    </object>
+                  )
                 }
               </div>
               <div className="lightbox__nav">
