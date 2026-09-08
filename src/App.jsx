@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useMotionValue, animate, useInView } from 'framer-motion'
 import {
-  FaGraduationCap, FaRobot, FaChurch, FaSeedling, FaBookOpen,
-  FaExternalLinkAlt, FaGithub, FaLinkedinIn, FaYoutube,
+  FaGraduationCap, FaRobot, FaChurch, FaSeedling, FaBookOpen, FaComments,
+  FaExternalLinkAlt, FaGithub, FaLinkedinIn, FaYoutube, FaServer,
   FaArrowRight, FaTimes, FaBriefcase, FaUserGraduate,
   FaEnvelope, FaMapMarkerAlt, FaCalendarAlt, FaCertificate,
 } from 'react-icons/fa'
@@ -93,6 +93,17 @@ const SKILLS = {
 
 const EXPERIENCE = [
   {
+    role: 'Front End Developer Intern (React Native Track)',
+    org: 'AmaliTech — Immersive Internship Programme',
+    location: 'Kumasi, Ghana (On-Site, Service Centre)',
+    period: 'September 2026 – Present',
+    type: 'internship',
+    points: [
+      "Selected for AmaliTech's Immersive Internship Programme after passing HR screening, a CodeSignal coding assessment, and a behavioral + technical interview.",
+      'Working on the Front End / React Native track, started 7 September 2026.',
+    ],
+  },
+  {
     role: 'Web Developer',
     org: 'Natura Corporation',
     location: 'North Legon, Accra, Ghana',
@@ -117,6 +128,17 @@ const EXPERIENCE = [
 ]
 
 const PROJECTS = [
+  {
+    name: 'EduMentor',
+    subtitle: 'RAG-Based WASSCE AI Mentor',
+    desc: 'Project Manager on a supervised academic mini-project (S1, Group 2, supervised by Dr. Eric Opoku Osei): an adaptive, personalized AI tutoring system for WASSCE candidates. A retrieval-augmented, multi-channel mentor built for low-bandwidth Ghanaian classrooms, supporting WhatsApp and USSD, MCQ/theory question types, LLM-based adaptive grading, and scheduled study reminders. Built a 506-entry WASSCE Q&A corpus across Core Math, Integrated Science, Social Studies, and English.',
+    tags: ['RAG', 'FastAPI', 'Twilio WhatsApp'],
+    live: 'https://wassce-ai-mentor-react.onrender.com',
+    api: 'https://wassce-ai-mentor-api.onrender.com',
+    github: 'https://github.com/FrimpongMauricious/EduMentor',
+    icon: FaComments,
+    period: 'Jun 2026 – Sep 2026',
+  },
   {
     name: 'ElevateHub',
     subtitle: 'AI-Powered Exam & Interview Prep Platform',
@@ -507,6 +529,11 @@ export default function App() {
                   {p.live && (
                     <a href={p.live} target="_blank" rel="noreferrer" className="proj-link proj-link--live">
                       <FaExternalLinkAlt /> Live
+                    </a>
+                  )}
+                  {p.api && (
+                    <a href={p.api} target="_blank" rel="noreferrer" className="proj-link proj-link--gh">
+                      <FaServer /> API
                     </a>
                   )}
                   {p.github && (
