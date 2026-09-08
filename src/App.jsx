@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useMotionValue, animate, useInView } from 'framer-motion'
 import {
   FaGraduationCap, FaRobot, FaChurch, FaSeedling, FaBookOpen, FaComments,
-  FaExternalLinkAlt, FaGithub, FaLinkedinIn, FaYoutube, FaServer,
+  FaExternalLinkAlt, FaGithub, FaLinkedinIn, FaYoutube, FaServer, FaWhatsapp,
   FaArrowRight, FaTimes, FaBriefcase, FaUserGraduate,
   FaEnvelope, FaMapMarkerAlt, FaCalendarAlt, FaCertificate,
 } from 'react-icons/fa'
@@ -135,6 +135,7 @@ const PROJECTS = [
     tags: ['RAG', 'FastAPI', 'Twilio WhatsApp'],
     live: 'https://wassce-ai-mentor-react.onrender.com',
     api: 'https://wassce-ai-mentor-api.onrender.com',
+    whatsapp: 'https://wa.me/14155238886?text=join%20inch-service',
     github: 'https://github.com/FrimpongMauricious/EduMentor',
     icon: FaComments,
     period: 'Jun 2026 – Sep 2026',
@@ -534,6 +535,11 @@ export default function App() {
                   {p.api && (
                     <a href={p.api} target="_blank" rel="noreferrer" className="proj-link proj-link--gh">
                       <FaServer /> API
+                    </a>
+                  )}
+                  {p.whatsapp && (
+                    <a href={p.whatsapp} target="_blank" rel="noreferrer" className="proj-link proj-link--gh">
+                      <FaWhatsapp /> Try on WhatsApp
                     </a>
                   )}
                   {p.github && (
