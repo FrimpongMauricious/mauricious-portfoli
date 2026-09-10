@@ -107,7 +107,7 @@ const EXPERIENCE = [
     role: 'Web Developer',
     org: 'Natura Corporation',
     location: 'North Legon, Accra, Ghana',
-    period: 'March 2026 – Present',
+    period: 'March 2026 – July 2026',
     type: 'contract',
     points: [
       'Maintained and updated the Natura Corporation corporate website (naturacorporation.com), ensuring uptime, content accuracy, and a polished user experience.',
