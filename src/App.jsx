@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useMotionValue, animate, useInView } from 'framer-motion'
 import {
   FaGraduationCap, FaRobot, FaChurch, FaSeedling, FaBookOpen, FaComments,
-  FaExternalLinkAlt, FaGithub, FaLinkedinIn, FaYoutube, FaServer, FaWhatsapp,
+  FaExternalLinkAlt, FaGithub, FaLinkedinIn, FaYoutube, FaServer, FaWhatsapp, FaTrophy,
   FaArrowRight, FaTimes, FaBriefcase, FaUserGraduate,
   FaEnvelope, FaMapMarkerAlt, FaCalendarAlt, FaCertificate,
 } from 'react-icons/fa'
@@ -139,6 +139,7 @@ const PROJECTS = [
     github: 'https://github.com/FrimpongMauricious/EduMentor',
     icon: FaComments,
     period: 'Jun 2026 – Sep 2026',
+    recognition: 'Top 5 of 102 teams — Execute Africa AI Challenge',
   },
   {
     name: 'ElevateHub',
@@ -522,6 +523,11 @@ export default function App() {
                 </div>
                 <h3 className="project-card__name">{p.name}</h3>
                 <p className="project-card__sub">{p.subtitle}</p>
+                {p.recognition && (
+                  <button type="button" className="project-card__recognition" onClick={goToGallery}>
+                    <FaTrophy /> {p.recognition}
+                  </button>
+                )}
                 <p className="project-card__desc">{p.desc}</p>
                 <div className="project-card__tags">
                   {p.tags.map(t => <span key={t} className="project-tag">{t}</span>)}

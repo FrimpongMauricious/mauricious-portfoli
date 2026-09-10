@@ -59,11 +59,17 @@ import amalitechRandomPic   from './assets/gallery/random_pic_at_amalitech.jpg'
 import amalitechCoreValues  from './assets/gallery/solo_standing_pick_facing_core_values_of_amalitech.jpg'
 
 // ── Execute Africa AI Challenge Hackathon (Vector AI Africa Week) ───────────
-import execAfricaTeammate   from './assets/gallery/picture_with_my_teammate_at_execute_africa_ai_hackathon.jpg'
-import execAfricaPresenting from './assets/gallery/presenting_to_the_judges_at_execute_africa_ai_challenge_hackathon.jpg'
-import execAfricaAlxLogo    from './assets/gallery/solo_pick_at_execute_africa_ai_hackathon_facing_the_alx_logo.jpg'
-import execAfricaSoloRandom from './assets/gallery/solo_random_pic_at_hackathon_execute_africa_ai.jpg'
-import execAfricaOrganiser  from './assets/gallery/video_of_the organiser_giving_instructions_of_execute_africa_hackathon.mp4'
+import execAfricaTeammate    from './assets/gallery/picture_with_my_teammate_at_execute_africa_ai_hackathon.jpg'
+import execAfricaPresenting  from './assets/gallery/presenting_to_the_judges_at_execute_africa_ai_challenge_hackathon.jpg'
+import execAfricaAlxLogo     from './assets/gallery/solo_pick_at_execute_africa_ai_hackathon_facing_the_alx_logo.jpg'
+import execAfricaSoloRandom  from './assets/gallery/solo_random_pic_at_hackathon_execute_africa_ai.jpg'
+import execAfricaOrganiser   from './assets/gallery/video_of_the organiser_giving_instructions_of_execute_africa_hackathon.mp4'
+import execAfricaAgnesPlaque from './assets/gallery/Agnes_holding_the_plaque_executeAfricaAIhackathon.jpg'
+import execAfricaAnotherTeam from './assets/gallery/another_pic_with_my_team_atThe_executeAfrica_hackathon.jpg'
+import execAfrica5thPlaque   from './assets/gallery/holding_the_5th_position_plaque_at_executeAfrica_hackathon.jpg'
+import execAfricaMeshackPlaque from './assets/gallery/meshack_holding_the_5th_position_plaque_executeAfricaAIHackathon.jpg'
+import execAfricaTeamPlaque  from './assets/gallery/team_aethelis_solutions_holdong_the_5th_position_plaque_executeAfricaAIhackathon.jpg'
+import execAfricaThumbsUp    from './assets/gallery/team_giving_thumbsUp_executeAfricaAIChallengeHackathon.jpg'
 
 // ── Videos ──────────────────────────────────────────────────────────────────
 import wonProgrammerYear  from './assets/gallery/won the programmer of the year.mp4'
@@ -101,7 +107,7 @@ export const GALLERY = [
   { src: wa5701,              title: 'Programmer of the Year Ceremony',                  caption: 'Award ceremony · KNUST Department of Computer Science, 2025',   type: 'image', tag: 'Achievement' },
   { src: voiceupMedal,       title: 'VoiceUp — Hackathon Win',                           caption: 'Receiving the winner\'s medal · Claude Builders Club Hackathon powered by Anthropic & KNUST AI · 2026', type: 'image', tag: 'Achievement' },
   { src: voiceupTeamMedal,   title: 'Team Apex-404 — Hackathon Winners',                 caption: 'Claude Builders Club Hackathon · KNUST, 2026',                   type: 'image', tag: 'Achievement' },
-  { src: execAfricaPresenting, title: 'Execute Africa AI Challenge Hackathon — Finalist', caption: 'Team project selected for the final stage · Vector AI Africa Week, Palm Eagles Hotel, Accra · Sept 2026', type: 'image', tag: 'Achievement' },
+  { src: execAfricaTeamPlaque, title: 'Execute Africa AI Challenge Hackathon — 5th Place (Final Pitch)', caption: 'Competed with EduMentor (WASSCE AI Mentor) as team Aethelis Solutions · Top 5 of 102 teams · Final pitch, Vector AI Africa Week, Palm Eagles Hotel, Accra · Sept 2026', type: 'image', tag: 'Achievement' },
 
   // Certificates
   { src: programmerCert,     title: 'Male Programmer of the Year Certificate',           caption: 'Officially awarded by KNUST Dept. of Computer Science · 2024/2025', type: 'image', tag: 'Certificate' },
@@ -121,12 +127,18 @@ export const GALLERY = [
   { src: voiceupChristabel,  title: 'With Christabel',                                  caption: 'At the Claude Builders Club Hackathon · KNUST, 2026',                   type: 'image', tag: 'Hackathon' },
   { src: voiceupKelvin,      title: 'With Kelvin',                                      caption: 'At the Claude Builders Club Hackathon · KNUST, 2026',                   type: 'image', tag: 'Hackathon' },
 
-  // Hackathons — Execute Africa AI Challenge Hackathon (Vector AI Africa Week) — Finalist
+  // Hackathons — Execute Africa AI Challenge Hackathon (Vector AI Africa Week) — 5th Place, Final Pitch
   { src: execAfricaTeammate,   title: 'Picture With My Teammate at Execute Africa AI Hackathon',                caption: 'Execute Africa AI Challenge Hackathon · Palm Eagles Hotel, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
-  { src: execAfricaPresenting, title: 'Presenting to the Judges at Execute Africa AI Challenge Hackathon',      caption: 'Pitching our finalist project · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfricaPresenting, title: 'Presenting to the Judges at Execute Africa AI Challenge Hackathon',      caption: 'Pitching EduMentor to the judges · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
   { src: execAfricaAlxLogo,    title: 'Solo Pic at Execute Africa AI Hackathon Facing the ALX Logo',            caption: 'Execute Africa AI Challenge Hackathon · Palm Eagles Hotel, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
   { src: execAfricaSoloRandom, title: 'Solo Random Pic at the Execute Africa AI Hackathon',                     caption: 'Execute Africa AI Challenge Hackathon · Palm Eagles Hotel, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
   { src: execAfricaOrganiser,  title: 'Organiser Giving Instructions at the Execute Africa Hackathon',          caption: 'Briefing before the pitch session · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'video', tag: 'Hackathon' },
+  { src: execAfricaAnotherTeam, title: 'Another Pic With My Team at the Execute Africa Hackathon',              caption: 'Team Aethelis Solutions · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfricaThumbsUp,   title: 'Team Giving Thumbs Up',                                                  caption: 'Team Aethelis Solutions · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfrica5thPlaque,  title: 'Holding the 5th Position Plaque at Execute Africa Hackathon',            caption: 'Team Aethelis Solutions — 5th place, final pitch · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfricaAgnesPlaque, title: 'Agnes Holding the Plaque',                                              caption: 'Team Aethelis Solutions — 5th place, final pitch · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfricaMeshackPlaque, title: 'Meshack Holding the 5th Position Plaque',                             caption: 'Team Aethelis Solutions — 5th place, final pitch · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfricaTeamPlaque, title: 'Team Aethelis Solutions Holding the 5th Position Plaque',                caption: 'Team Aethelis Solutions — 5th place, final pitch · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
 
   // AmaliTech Immersive Internship Programme — Offer Accepted (Front End Developer Intern, React Native track)
   { src: amalitechOfferLetter, title: 'AmaliTech Immersive Internship Programme — Offer Accepted', caption: 'Offer of admission after HR screening, a CodeSignal assessment, and a behavioral + technical interview · Front End Developer Intern (React Native track), Kumasi · Started 7 Sept 2026', type: 'pdf', tag: 'Achievement' },
