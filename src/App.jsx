@@ -91,6 +91,37 @@ const SKILLS = {
   'Cloud & DevOps':     ['Docker', 'Render', 'Git', 'GitHub'],
 }
 
+const ACHIEVEMENTS = [
+  {
+    title: 'Male Programmer of the Year',
+    org: 'Department of Computer Science, KNUST',
+    venue: null,
+    period: '2024/2025 Academic Year',
+    desc: 'Recognised with a certificate, medal, and plaque for outstanding programming capability and technical excellence over the academic year.',
+  },
+  {
+    title: '5th Place (Final Pitch) — Execute Africa AI Challenge Hackathon',
+    org: 'Vector AI Africa Week',
+    venue: 'Palm Eagles Hotel, Accra',
+    period: 'September 2026',
+    desc: 'Competed with EduMentor (WASSCE AI Mentor) as main engineer for team Aethelis Solutions. Selected among the top 5 of 102 teams from across Africa to advance to the final pitch stage.',
+  },
+  {
+    title: '4th Place — "Future of Work" West African Hackathon',
+    org: 'BeTechConnected',
+    venue: 'University of Ghana, Legon',
+    period: 'March 21, 2025',
+    desc: 'Competed as Lead Developer of Team PixyChain, a three-member team, in a Web3-focused hackathon on decentralisation with participants from across West Africa. Led development of a Flutter-based platform connecting entrepreneurs pitching ideas for investor funding with a mechanism linking scholarship applicants to sponsors.',
+  },
+  {
+    title: 'Historic Quarter-Final Qualification — National Science and Maths Quiz (NSMQ)',
+    org: 'Osei Kyeretwie Senior High School',
+    venue: null,
+    period: '2022 and 2023 Editions',
+    desc: "Led the school's team to the quarter-finals of the NSMQ for the first time in the institution's history, and repeated the feat the following year as Quiz Prefect.",
+  },
+]
+
 const EXPERIENCE = [
   {
     role: 'Front End Developer Intern (React Native Track)',
@@ -467,6 +498,35 @@ export default function App() {
               ))}
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Achievements ── */}
+      <section id="achievements" className="section section--alt">
+        <div className="container">
+          <Reveal><h2 className="sec-title">Achievements <span className="grad-text">& Recognition</span></h2></Reveal>
+          <motion.div
+            className="achv__list"
+            variants={stagger(0.13)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-60px' }}
+          >
+            {ACHIEVEMENTS.map((a, i) => (
+              <motion.div key={i} className="achv-card" variants={fadeUp}>
+                <div className="achv-card__left">
+                  <span className="achv-card__badge"><FaTrophy /> Achievement</span>
+                  <span className="achv-card__period"><FaCalendarAlt /> {a.period}</span>
+                  {a.venue && <span className="achv-card__location"><FaMapMarkerAlt /> {a.venue}</span>}
+                </div>
+                <div className="achv-card__right">
+                  <h3 className="achv-card__title">{a.title}</h3>
+                  <p className="achv-card__org">{a.org}</p>
+                  <p className="achv-card__desc">{a.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
