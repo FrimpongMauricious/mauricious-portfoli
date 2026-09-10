@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useMotionValue, animate, useInView } from 'framer-motion'
 import {
   FaGraduationCap, FaRobot, FaChurch, FaSeedling, FaBookOpen, FaComments,
-  FaExternalLinkAlt, FaGithub, FaLinkedinIn, FaYoutube, FaServer, FaWhatsapp, FaTrophy,
+  FaExternalLinkAlt, FaGithub, FaLinkedinIn, FaYoutube, FaServer, FaWhatsapp, FaTrophy, FaGooglePlay,
   FaArrowRight, FaTimes, FaBriefcase, FaUserGraduate,
   FaEnvelope, FaMapMarkerAlt, FaCalendarAlt, FaCertificate,
 } from 'react-icons/fa'
@@ -134,6 +134,7 @@ const PROJECTS = [
     desc: 'Sole developer of a mobile application for Christian knowledge-sharing, with secure authentication, structured content management, and community discussion. Backend in Spring Boot with PostgreSQL.',
     tags: ['Spring Boot', 'PostgreSQL', 'Mobile'],
     live: null,
+    playstore: 'https://play.google.com/store/apps/details?id=com.frimpongmauricious.koinonia',
     github: 'https://github.com/FrimpongMauricious/KOINONIA',
     icon: FaChurch,
     period: 'Feb 2026 – Jun 2026',
@@ -546,6 +547,11 @@ export default function App() {
                   {p.whatsapp && (
                     <a href={p.whatsapp} target="_blank" rel="noreferrer" className="proj-link proj-link--gh">
                       <FaWhatsapp /> Try on WhatsApp
+                    </a>
+                  )}
+                  {p.playstore && (
+                    <a href={p.playstore} target="_blank" rel="noreferrer" className="proj-link proj-link--live">
+                      <FaGooglePlay /> Play Store
                     </a>
                   )}
                   {p.github && (
