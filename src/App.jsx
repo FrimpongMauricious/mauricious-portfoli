@@ -129,6 +129,16 @@ const EXPERIENCE = [
 
 const PROJECTS = [
   {
+    name: 'Koinonia',
+    subtitle: 'Christian Knowledge-Sharing Mobile App',
+    desc: 'Sole developer of a mobile application for Christian knowledge-sharing, with secure authentication, structured content management, and community discussion. Backend in Spring Boot with PostgreSQL.',
+    tags: ['Spring Boot', 'PostgreSQL', 'Mobile'],
+    live: null,
+    github: 'https://github.com/FrimpongMauricious/KOINONIA',
+    icon: FaChurch,
+    period: 'Feb 2026 – Jun 2026',
+  },
+  {
     name: 'EduMentor',
     subtitle: 'RAG-Based WASSCE AI Mentor',
     desc: 'Project Manager on a supervised academic mini-project (S1, Group 2, supervised by Dr. Eric Opoku Osei): an adaptive, personalized AI tutoring system for WASSCE candidates. A retrieval-augmented, multi-channel mentor built for low-bandwidth Ghanaian classrooms, supporting WhatsApp and USSD, MCQ/theory question types, LLM-based adaptive grading, and scheduled study reminders. Built a 506-entry WASSCE Q&A corpus across Core Math, Integrated Science, Social Studies, and English.',
@@ -160,16 +170,6 @@ const PROJECTS = [
     github: 'https://github.com/FrimpongMauricious/point-of-sales',
     icon: FaRobot,
     period: 'Mar 2026 – Apr 2026',
-  },
-  {
-    name: 'Koinonia',
-    subtitle: 'Christian Knowledge-Sharing Mobile App',
-    desc: 'Sole developer of a mobile application for Christian knowledge-sharing, with secure authentication, structured content management, and community discussion. Backend in Spring Boot with PostgreSQL.',
-    tags: ['Spring Boot', 'PostgreSQL', 'Mobile'],
-    live: null,
-    github: 'https://github.com/FrimpongMauricious/KOINONIA',
-    icon: FaChurch,
-    period: 'Feb 2026 – Jun 2026',
   },
   {
     name: 'AgriHub',
