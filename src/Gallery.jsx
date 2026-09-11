@@ -70,6 +70,8 @@ import execAfrica5thPlaque   from './assets/gallery/holding_the_5th_position_pla
 import execAfricaMeshackPlaque from './assets/gallery/meshack_holding_the_5th_position_plaque_executeAfricaAIHackathon.jpg'
 import execAfricaTeamPlaque  from './assets/gallery/team_aethelis_solutions_holdong_the_5th_position_plaque_executeAfricaAIhackathon.jpg'
 import execAfricaThumbsUp    from './assets/gallery/team_giving_thumbsUp_executeAfricaAIChallengeHackathon.jpg'
+import execAfricaListening   from './assets/gallery/listeningToJudgesRemarks_at_executeAfricaAIhackathon.jpg'
+import execAfricaOnStage     from './assets/gallery/presentingToJudges_at_executeAfricaAIChallengeHackahton.jpg'
 
 // ── Videos ──────────────────────────────────────────────────────────────────
 import wonProgrammerYear  from './assets/gallery/won the programmer of the year.mp4'
@@ -139,6 +141,8 @@ export const GALLERY = [
   { src: execAfricaAgnesPlaque, title: 'Agnes Holding the Plaque',                                              caption: 'Team Aethelis Solutions — 5th place, final pitch · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
   { src: execAfricaMeshackPlaque, title: 'Meshack Holding the 5th Position Plaque',                             caption: 'Team Aethelis Solutions — 5th place, final pitch · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
   { src: execAfricaTeamPlaque, title: 'Team Aethelis Solutions Holding the 5th Position Plaque',                caption: 'Team Aethelis Solutions — 5th place, final pitch · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfricaOnStage,    title: 'Presenting to Judges at the Execute Africa AI Challenge Hackathon',      caption: 'Presenting EduMentor on stage · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
+  { src: execAfricaListening,  title: "Listening to Judges' Remarks at the Execute Africa AI Hackathon",        caption: 'On-stage Q&A with the judges · Execute Africa AI Challenge Hackathon, Accra · Sept 2026', type: 'image', tag: 'Hackathon' },
 
   // AmaliTech Immersive Internship Programme — Offer Accepted (Front End Developer Intern, React Native track)
   { src: amalitechOfferLetter, title: 'AmaliTech Immersive Internship Programme — Offer Accepted', caption: 'Offer of admission after HR screening, a CodeSignal assessment, and a behavioral + technical interview · Front End Developer Intern (React Native track), Kumasi · Started 7 Sept 2026', type: 'pdf', tag: 'Achievement' },
