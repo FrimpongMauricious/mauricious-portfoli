@@ -72,6 +72,7 @@ import execAfricaTeamPlaque  from './assets/gallery/team_aethelis_solutions_hold
 import execAfricaThumbsUp    from './assets/gallery/team_giving_thumbsUp_executeAfricaAIChallengeHackathon.jpg'
 import execAfricaListening   from './assets/gallery/listeningToJudgesRemarks_at_executeAfricaAIhackathon.jpg'
 import execAfricaOnStage     from './assets/gallery/presentingToJudges_at_executeAfricaAIChallengeHackahton.jpg'
+import awsCloudPractitioner  from './assets/gallery/aws-certified-cloud-practitioner.png'
 
 // ── Videos ──────────────────────────────────────────────────────────────────
 import wonProgrammerYear  from './assets/gallery/won the programmer of the year.mp4'
@@ -97,6 +98,7 @@ const modalV = {
 // ── Gallery data ─────────────────────────────────────────────────────────────
 export const GALLERY = [
   // Achievements
+  { src: awsCloudPractitioner, title: 'AWS Certified Cloud Practitioner - Passed', caption: 'aws-certified-cloud-practitioner.png', type: 'image', tag: 'Achievement' },
   { src: maleProgrammerYear,  title: 'Male Programmer of the Year',                     caption: 'KNUST Department of Computer Science · 2024/2025 Academic Year', type: 'image', tag: 'Achievement' },
   { src: wonProgrammerYear,   title: 'Winning Programmer of the Year',                   caption: 'The moment the award was announced · KNUST, 2025',              type: 'video', tag: 'Achievement' },
   { src: picWithTob,          title: 'With Tob After Winning Programmer of the Year',    caption: 'Celebrating after receiving the award · KNUST, 2025',           type: 'image', tag: 'Achievement' },

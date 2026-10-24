@@ -18,6 +18,7 @@ import cppCert        from './assets/c++ certificate from udemy.pdf'
 import cloudCert      from './assets/cloud_computing_certification.pdf'
 import osCert         from './assets/operating_system_certificate.pdf'
 import pythonCert     from './assets/python_cert_from_devtownn.pdf'
+import awsCert        from './assets/aws-certified-cloud-practitioner.png'
 import './App.css'
 
 /* ── Animation variants ── */
@@ -88,10 +89,18 @@ const SKILLS = {
   Backend:              ['Spring Boot', 'Flask (Python)'],
   'Databases':          ['PostgreSQL', 'MySQL'],
   'APIs & Integrations':['OpenAI API', 'Google Maps Platform', 'WebSockets', 'Paystack', 'Hubtel'],
-  'Cloud & DevOps':     ['Docker', 'Render', 'Git', 'GitHub'],
+  'Cloud & DevOps':     ['Docker', 'Render', 'Git', 'GitHub', 'AWS (Cloud Practitioner)'],
 }
 
 const ACHIEVEMENTS = [
+  {
+    title: 'AWS Certified Cloud Practitioner',
+    org: 'Amazon Web Services | AmaliTech AWS Cloud Training (University Edition)',
+    venue: null,
+    period: 'October 2026',
+    desc: 'Passed the AWS Certified Cloud Practitioner exam, validating foundational cloud knowledge across AWS services, security, architecture, and pricing.',
+    link: 'https://www.credly.com/badges/ca736f95-b8fd-423f-abd0-459f2f0c607e/public_url',
+  },
   {
     title: 'Male Programmer of the Year',
     org: 'Department of Computer Science, KNUST',
@@ -226,6 +235,16 @@ const PROJECTS = [
 ]
 
 const CERTS = [
+  {
+    title: 'AWS Certified Cloud Practitioner',
+    issuer: 'Amazon Web Services (AWS)',
+    date: 'October 2026',
+    description: 'Earned through the AmaliTech AWS Cloud Training programme (University Edition). Validates foundational knowledge of AWS Cloud concepts, core services, security, architecture, pricing, and support.',
+    file: awsCert,
+    type: 'image',
+    accent: '#FF9900',
+    credential: 'https://www.credly.com/badges/ca736f95-b8fd-423f-abd0-459f2f0c607e/public_url',
+  },
   {
     title: 'Google IT Support Professional Certificate',
     issuer: 'Google / Coursera',
@@ -523,6 +542,11 @@ export default function App() {
                   <h3 className="achv-card__title">{a.title}</h3>
                   <p className="achv-card__org">{a.org}</p>
                   <p className="achv-card__desc">{a.desc}</p>
+                  {a.link && (
+                    <a href={a.link} target="_blank" rel="noreferrer" className="btn btn--ghost achievement-link">
+                      View Credential <FaExternalLinkAlt />
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -662,9 +686,17 @@ export default function App() {
             viewport={{ once: true, margin: '-60px' }}
           >
             {CERTS.map((c, i) => (
-              <motion.button
+              <motion.div
                 key={i}
                 className="cert-card"
+                role="button"
+                tabIndex={0}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    setActiveCert(c)
+                  }
+                }}
                 onClick={() => setActiveCert(c)}
                 style={{ '--ca': c.accent }}
                 variants={fadeUp}
@@ -677,8 +709,11 @@ export default function App() {
                   <p className="cert-card__issuer">{c.issuer}</p>
                   <p className="cert-card__date">{c.date}</p>
                 </div>
-                <span className="cert-card__cta">View <FaArrowRight /></span>
-              </motion.button>
+                {c.credential
+                  ? <a href={c.credential} target="_blank" rel="noreferrer" className="cert-card__cta" onClick={e => e.stopPropagation()}>View Credential <FaExternalLinkAlt /></a>
+                  : <span className="cert-card__cta">View <FaArrowRight /></span>
+                }
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -731,6 +766,7 @@ export default function App() {
                 <div>
                   <h3 className="modal__title">{activeCert.title}</h3>
                   <p className="modal__issuer">{activeCert.issuer} &nbsp;·&nbsp; {activeCert.date}</p>
+                  {activeCert.description && <p className="modal__issuer">{activeCert.description}</p>}
                 </div>
                 <button className="modal__close" onClick={() => setActiveCert(null)}><FaTimes /></button>
               </div>
@@ -748,6 +784,9 @@ export default function App() {
               <div className="modal__foot">
                 <a href={activeCert.file} target="_blank" rel="noreferrer" className="btn btn--ghost">Open in New Tab</a>
                 <a href={activeCert.file} download className="btn btn--primary">Download</a>
+                {activeCert.credential && (
+                  <a href={activeCert.credential} target="_blank" rel="noreferrer" className="btn btn--ghost">View Credential <FaExternalLinkAlt /></a>
+                )}
               </div>
             </motion.div>
           </motion.div>
